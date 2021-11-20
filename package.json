@@ -1,10 +1,80 @@
 {
-  "name": "react-purescript",
+  "author": "natserract <benjaminstwo@gmail.com>",
+  "name": "purescript",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  "description": "Starter kit for purescript",
+  "main": "./bundles/index.umd.js",
+  "es2015": "./esm2015/index.js",
+  "typings": "",
+  "private": false,
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/natserract/"
+  },
   "scripts": {
-    "dev": "spago run",
-    "build": "spago build"
-  }
+    "cleanup": "shx rm -rf dist",
+    "prebuild": "npm run cleanup",
+    "start": "concurrently \"yarn spago:build\" \"reload -b -s index.html  -p 3000\"",
+    "rollup:watch": "rollup -c config/rollup.config.js -w",
+    "spago:build": "spago build --watch --clear-screen --before 'yarn spago:bundle'",
+    "spago:bundle": "spago bundle-app --main Main --to dist/esm2015/index.js",
+    "build": "yarn spago bundle-app --main Main --to dist/esm2015/index.js --source-maps && rollup -c config/rollup.config.js --environment NODE_ENV:production",
+    "postbuild": "node scripts/copy && npm run size",
+    "size": "node scripts/file-size ./dist/bundles/index.umd.min.js ./dist/bundles/index.esm.min.js",
+    "commit": "git-cz",
+    "release:github": "git push --no-verify --follow-tags origin master"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "7.2.1",
+    "@commitlint/config-conventional": "7.1.2",
+    "@types/node": "8.10.*",
+    "brotli-size": "0.0.3",
+    "commitizen": "3.0.5",
+    "concurrently": "^6.4.0",
+    "cross-var": "1.1.0",
+    "cz-conventional-changelog": "2.1.0",
+    "gzip-size": "5.0.0",
+    "husky": "1.3.0",
+    "reload": "^3.2.0",
+    "rollup": "0.68.2",
+    "rollup-plugin-commonjs": "9.2.0",
+    "rollup-plugin-json": "3.1.0",
+    "rollup-plugin-node-resolve": "4.0.0",
+    "rollup-plugin-replace": "2.1.0",
+    "rollup-plugin-sourcemaps": "0.4.2",
+    "rollup-plugin-terser": "3.0.0",
+    "rollup-plugin-uglify": "6.0.0",
+    "shx": "0.3.2",
+    "spago": "^0.20.3",
+    "standard-version": "4.4.0",
+    "webpack-config-utils": "2.3.1"
+  },
+  "dependencies": {
+    "kleur": "^4.1.4",
+    "pretty-bytes": "^5.6.0"
+  },
+  "engines": {},
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint --config config/commitlint.config.js -E HUSKY_GIT_PARAMS",
+      "pre-commit": "git add",
+      "pre-push": "npm run style && npm test -- --bail --onlyChanged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx,css,scss,sass,less,md}": [
+      "git add"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "git add"
+    ]
+  },
+  "proxy": "http://localhost:5000"
 }
