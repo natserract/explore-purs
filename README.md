@@ -1,3 +1,5 @@
+![PureScript](https://github.com/purescript/purescript/raw/master/logo.png)
+
 # Purescript
 PureScript is a general purpose language which compiles to JS. Unlike a domain-specific language like Elm (which is only for front-end apps) that pretty much means PureScript can in theory entirely replace JS for any purpose – though you may find in practice that it is better for some applications than others, and you may end up calling out to some vanilla JS (e.g. common library bindings) out of expedience.
 
