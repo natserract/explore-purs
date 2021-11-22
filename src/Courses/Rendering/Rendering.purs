@@ -1,14 +1,17 @@
 -- | Docs: @see https://github.com/purescript/documentation/blob/master/language/Syntax.md
 -- You can write any way
-module Components.IntroPurs where
+module Courses.Rendering where
 
 import Prelude
 
 import Halogen.HTML as HH
-import IntroPurs.Children as Children
-import IntroPurs.WhereAndLet (exampleLet, exampleWhere)
+import Rendering.Children as Children
+import Rendering.Conditional as Conditional
+import Rendering.Lists as Lists
+import Rendering.WhereAndLet (exampleLet, exampleWhere)
+import Types.Global (SttcComponent)
 
-make :: ∀ props act. HH.HTML props act
+make :: ∀ props act. SttcComponent props act
 make =
   let
     -- Variable declaration
@@ -23,9 +26,9 @@ make =
       }
 
     -- Function declaration
-    -- Same with: (\x -> x <> " Str") x
+    -- Same with: (\x -> x) x
     fmt :: String -> String
-    fmt x = x <> " Str"
+    fmt x = show x
   in
     HH.div_
       [ HH.span_
@@ -33,8 +36,10 @@ make =
           , HH.text $ properties.first <> properties.last -- Access record props
           ]
       , Children.make innerComponent
+      , Lists.make
+      , Conditional.make true
       ]
 
-innerComponent :: ∀ props act. HH.HTML props act
+innerComponent :: ∀ props act. SttcComponent props act
 innerComponent =
   HH.span_ [ HH.text "I'm a children" ]

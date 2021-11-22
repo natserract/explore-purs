@@ -2,14 +2,15 @@ module App where
 
 import Prelude
 
-import Components.HelloPurs as HelloPurs
-import Components.IntroPurs as IntroPurs
+import Courses.HelloPurs as HelloPurs
+import Courses.Rendering as Rendering
 import Data.Const (Const)
 import Data.Maybe (Maybe(..))
 import Effect.Aff (Aff)
 import Effect.Console (log)
 import Halogen as H
 import Halogen.HTML as HH
+import Types.Global (DynComponent)
 
 type State = {}
 type ChildSlots =
@@ -26,11 +27,11 @@ data Action
 
 -- @see https://pursuit.purescript.org/packages/purescript-halogen/6.1.2/docs/Halogen#t:Component
 -- -- `state` is the component's state
--- -- `query` is the query algebra; the requests that can be made of the component
+-- -- `query` is the query algebra; the requests that can be made of the component (render)
 -- -- `action` is the type of actions; messages internal to the component that can be evaluated
 -- -- `eval` is a function that handles the HalogenQ algebra that deals with component lifecycle, handling actions, and responding to requests
 
-make :: ∀ eff. H.Component eff Unit Void Aff
+make :: ∀ q. DynComponent q Unit Void Aff
 make = do
   H.mkComponent
     { initialState
@@ -61,5 +62,5 @@ make = do
         [ HH.h1_ [ HH.text label ]
         , HH.div_ [ HelloPurs.make ]
         , HH.h2_ [ HH.text "Alfin Surya" ]
-        , IntroPurs.make
+        , Rendering.make
         ]

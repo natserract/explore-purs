@@ -1,4 +1,6 @@
-module IntroPurs.WhereAndLet where
+module Rendering.WhereAndLet where
+
+import Prelude
 
 -- | Both let and where, you can choose and write any way
 -- `let` expression
@@ -27,4 +29,6 @@ exampleWhere =
   firstName = "First"
 
   lastName :: String
-  lastName = "Last"
+  lastName = "Last" <> nextName
+    where
+    nextName = "Mean" -- nested where expr
