@@ -26,8 +26,8 @@ make =
       }
 
     -- Function declaration
-    -- Same with: (\x -> x) x
-    fmt :: String -> String
+    -- Same with: (\x → x) x
+    fmt :: String → String
     fmt x = show x
   in
     HH.div_

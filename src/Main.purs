@@ -9,5 +9,5 @@ import Halogen.VDom.Driver (runUI)
 
 main :: Effect Unit
 main = HA.runHalogenAff do
-  body <- HA.awaitBody
+  body ← HA.awaitBody
   runUI App.make unit body

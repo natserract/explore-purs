@@ -45,15 +45,15 @@ make = do
         )
     }
   where
-  initialState :: ∀ i. i -> State
+  initialState :: ∀ i. i → State
   initialState _ = {}
 
   -- Component lifecycle
-  handleAction :: ∀ o. Action -> H.HalogenM State Action ChildSlots o Aff Unit
+  handleAction :: ∀ o. Action → H.HalogenM State Action ChildSlots o Aff Unit
   handleAction Initialize = H.liftEffect $ log "Initialize Root"
   handleAction _ = pure unit
 
-  render :: State -> H.ComponentHTML Action ChildSlots Aff
+  render :: State → H.ComponentHTML Action ChildSlots Aff
   render _ =
     let
       label = "Hello Purs!"
