@@ -1,4 +1,4 @@
-module Conditional (
+module Courses.Conditional (
   ifelse,
   caseof,
   guard,
@@ -20,11 +20,11 @@ ifelse x y =
 -- | Case of
 caseof :: ∀ t. Eq t => Boolean → String
 caseof l = case l of
-  true -> show $ toUpper "Welcome"
-  _ -> show $ toUpper "Please logged in!"
+  true → show $ toUpper "Welcome"
+  _ → show $ toUpper "Please logged in!"
 
 -- | Guard guard
-guard :: ∀ t. Eq t => String -> String
+guard :: ∀ t. Eq t => String → String
 guard s 
   | s == "1" = show "Next!"
   | null s = show "Stop!"
@@ -36,7 +36,7 @@ guard s
 -- | implTernary a = a ? (show "True") $ (show "False")
 -- | ```
 -- 
-ternary :: ∀ t. Boolean -> t -> t -> t
+ternary :: ∀ t. Boolean → t → t → t
 ternary c a b = if (c) then a else b
 
 infixl 1 ternary as ?

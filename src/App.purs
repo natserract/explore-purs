@@ -3,6 +3,7 @@ module App where
 import Prelude
 
 import Courses.HelloPurs as HelloPurs
+import Courses.Hooks as Hooks
 import Courses.Rendering as Rendering
 import Data.Const (Const)
 import Data.Maybe (Maybe(..))
@@ -62,5 +63,7 @@ make = do
         [ HH.h1_ [ HH.text label ]
         , HH.div_ [ HelloPurs.make ]
         , HH.h2_ [ HH.text "Alfin Surya" ]
+        -- Render HTML
         , Rendering.make
+        , Hooks.runHooksExample
         ]
