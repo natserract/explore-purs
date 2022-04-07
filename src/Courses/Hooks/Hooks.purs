@@ -1,6 +1,11 @@
 -- Docs Halogen.Hooks
 -- @see: https://pursuit.purescript.org/packages/purescript-halogen-hooks/0.4.3/docs/Halogen.Hooks
-module Courses.Hooks where
+module Courses.Hooks
+  ( Action(..)
+  , _child
+  , make
+  )
+  where
 
 import Prelude
 

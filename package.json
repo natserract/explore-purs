@@ -2,7 +2,7 @@
   "author": "natserract <benjaminstwo@gmail.com>",
   "name": "purescript",
   "version": "1.0.0",
-  "description": "Starter kit for purescript",
+  "description": "Learn purescript",
   "main": "./bundles/index.umd.js",
   "es2015": "./esm2015/index.js",
   "typings": "",

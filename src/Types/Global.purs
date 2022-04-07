@@ -1,4 +1,8 @@
-module Types.Global where
+module Types.Global
+  ( DynComponent
+  , SttcComponent
+  )
+  where
 
 import Halogen as H
 import Halogen.HTML as HH
