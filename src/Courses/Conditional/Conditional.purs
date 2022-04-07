@@ -1,10 +1,10 @@
-module Courses.Conditional (
-  ifelse,
-  caseof,
-  guard,
-  ternary,
-  (?)
-) where
+module Courses.Conditional
+  ( ifelse
+  , caseof
+  , guard
+  , ternary
+  , (?)
+  ) where
 
 import Prelude
 
@@ -12,9 +12,8 @@ import Data.String (null, toUpper)
 
 -- | If Else
 ifelse :: ∀ t. Eq t => t → t → String
-ifelse x y = 
-  if x == y
-    then show "True"
+ifelse x y =
+  if x == y then show "True"
   else "False"
 
 -- | Case of
@@ -25,7 +24,7 @@ caseof l = case l of
 
 -- | Guard guard
 guard :: ∀ t. Eq t => String → String
-guard s 
+guard s
   | s == "1" = show "Next!"
   | null s = show "Stop!"
   | otherwise = show "Not Found"

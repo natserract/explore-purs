@@ -12,7 +12,7 @@ import Types.Global (SttcComponent)
 
 _child = Proxy :: Proxy "child"
 
-type Slots = ( child :: ∀ q. H.Slot q Void Unit )
+type Slots = (child :: ∀ q. H.Slot q Void Unit)
 data Action
   = Initialize
   | Finalize
@@ -22,8 +22,8 @@ data Action
   | ReportRoot String
 
 make :: ∀ m. H.ComponentHTML Action Slots m
-make = 
-  HH.div_ 
+make =
+  HH.div_
     [ HH.text "Render Hook Component"
     -- Render Another Component but with Different types
     -- If not using `slot_`  , you can't passing `HookComponent.make`
@@ -34,8 +34,8 @@ make =
     , HH.slot_ _child unit HookComponent.make unit
     ]
 
-runHooksExample :: ∀ props act. SttcComponent props act
-runHooksExample = do
-  HH.div_ [ 
-    make (\_ -> "")
-  ]
+-- runHooksExample :: ∀ props act. SttcComponent props act
+-- runHooksExample = do
+--   HH.div_ [ 
+--     make (\_ -> "")
+--   ]

@@ -12,7 +12,7 @@ make state =
   else render "success"
   where
   render :: String → SttcComponent props act
-  render m = 
-    HH.span 
+  render m =
+    HH.span
       [ className if not state then "hidden" else "visible" ] --inline condition
       [ HH.text m ]

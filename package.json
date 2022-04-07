@@ -15,9 +15,10 @@
   "scripts": {
     "cleanup": "shx rm -rf dist",
     "prebuild": "npm run cleanup",
-    "start": "concurrently \"yarn format\" \"yarn spago:build\" \"reload -b -s index.html  -p 3000\"",
+    "start": "concurrently \"yarn format\" \"yarn spago:build-dev\" \"reload -b -s index.html  -p 3000\"",
     "format": "purs-tidy format-in-place 'src/**/*.purs'",
     "rollup:watch": "rollup -c config/rollup.config.js -w",
+    "spago:build-dev": "spago build --watch --clear-screen",
     "spago:build": "spago build --watch --clear-screen --before 'yarn spago:bundle'",
     "spago:bundle": "spago bundle-app --main Main --to dist/esm2015/index.js",
     "build": "yarn spago bundle-app --main Main --to dist/esm2015/index.js --source-maps && rollup -c config/rollup.config.js --environment NODE_ENV:production",

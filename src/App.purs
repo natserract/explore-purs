@@ -57,7 +57,7 @@ make = do
   render :: State → H.ComponentHTML Action ChildSlots Aff
   render _ =
     let
-      label = "Hello Purs!"
+      label = "Hello Purs"
     in
       HH.div_
         [ HH.h1_ [ HH.text label ]
@@ -65,5 +65,5 @@ make = do
         , HH.h2_ [ HH.text "Alfin Surya" ]
         -- Render HTML
         , Rendering.make
-        , Hooks.runHooksExample
+        -- , Hooks.runHooksExample
         ]
